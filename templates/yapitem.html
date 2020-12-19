@@ -1,0 +1,18 @@
+
+{% extends "layout.html" %}
+
+{% block body %}
+  {% load crispy_forms_tags %}  
+
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button class="btn btn-danger" type="submit">Add</button>
+    </form>
+</div>
+<div class="container text-center">
+  <a href="/" class="btn btn-primary">Home Page</a>
+</div>
+
+{% endblock body %}

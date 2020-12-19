@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    
+    
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'dataTables.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="icon" type="image/png" href="/static/image/to-do-list.png" />
+    <title>My to do list</title>
+</head>
+<body>
+    {% load Send %}
+    {% load lenng %}
+    {% load crispy_forms_tags %}
+    {% load donme %}
+    <div class="container text-center mt-5">
+        <p>Welcome <small style="text-decoration: underline;">{{request.user.username}}</small></p>
+    </div>
+    <div class="container text-center">
+        <a href="/user/logout" class="btn btn-warning">Sign out</a>
+        <a href="/my/yapadd" class="btn btn-primary">Add to do list</a>
+        <a href="/my/yapitem" class="btn btn-danger">Add element to do list</a>
+    </div>
+    
+    <div class="container mt-5">
+
+
+        {% if messages %}
+        
+            {% for message in messages %}
+                <div id="message">
+                    {% if message.tags == "info" %}
+                        <div class="alert alert-danger">{{ message }}</div>
+            
+                    {% else %}
+                        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            
+                    {% endif %}
+                </div>
+            
+            {% endfor %}
+        
+        {% endif %}
+
+
+        <p id="verisay" style="display: none;">{{dizuzun}}</p>
+        {% if flag %}
+        
+            <div class="container">
+                <p class="card-text font-weight-bold">My to do list</p>
+            </div>
+
+            {% for i in uzunluk %}
+                {% with veri=listem|index:i %}
+                <!--[ OKUL BİLİŞİM  MAKALE ]  -->
+                <div id="main" class="container p-3 mb-4 text-center">
+                    <p id="title" class="card-text text-white">{{veri.name}}</p>
+                    <p style="display: inline-block;float: right;"><a href="/deleteList/{{veri.id}}" class="btn btn-danger">Delete</a></p>
+                {% endwith %}    
+                </div>
+                
+                
+                
+
+                <table id="myTable{{degisken.deger}}" class="table bg-danger">
+                    <thead>
+                        <tr>
+                            <th scope="col">Created_date</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Content</th>
+                            <th scope="col">Last_day</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% with mylist=datas|index:i %}
+                        
+                            {% with indirme=mylist|index:0 %}
+                        
+                                {% with uzu=indirme|length %}
+                        
+                                    {% with dongu=uzu|donn %}
+
+                                        {% for k in dongu %}
+                                            {% with son=indirme|index:k %}
+                                            
+                                                <tr class="bg-dark text-white">
+                                                    <th scope="row">{{son.created_date}}</th>
+                                                    <td>{{son.title}}</td>
+                                                    <td>{{son.content}}</td>
+                                                    <td>{{son.last_date}}</td>
+                                                    <td><div class="container">
+                                                        <p style="display: inline-block;">{{son.durum}}</p>
+                                                        {% if son.durum == False %}
+                                                            <a href="/update/{{son.id}}" class="btn btn-primary">OK</a>
+                                                        {% endif %}
+                                                    </div></td>
+                                                    <td><a href="/delete/{{son.id}}" class="btn btn-danger">Delete</a></td>
+                                                </tr>
+                                            
+                                            {% endwith %}
+                                        {% endfor %}
+
+                                    {% endwith %}
+                                {% endwith %}
+                        
+                             {% endwith %}
+                        
+                        {% endwith %}
+                        
+                        
+                    </tbody>
+                </table>
+                <p id="koduu" style="display: none;">{{degisken.arttir}}</p>
+                <hr>
+            {% endfor %}
+        {% else %}
+        <div class="container mt-3 bg-danger text-center text-white shadow-lg p-3">
+            <p class="card-text">Listeniz boş</p>
+        </div>
+        {% endif %}
+    
+        
+
+        
+        <div id="novumare" class="container text-center mt-2 mb-2">
+            <img id="photo" src="/static/image/45.jpeg" alt="">
+        </div>
+
+
+
+    </div>
+
+
+    <script src="/static/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="/static/js/datetime-moment.js"></script>
+    <script src="/static/js/moment.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css" />
+    
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
+    <script src="/static/js/codeem.js"></script>
+    
+
+
+
+</body>
+</html>
+
+

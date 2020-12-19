@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+body .row #haka{
+    width: 100%;
+    overflow: hidden;
+}
+
+body .row #headd{
+    background-color:  #FF4F5A;
+}
+
+body .row #cardi{
+    border: none;
+    
+}
+
+body .row #create{
+    text-decoration: none;
+}
+
+body .row #foot{
+    background-color: white;
+}

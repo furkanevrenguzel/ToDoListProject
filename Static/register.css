@@ -1,0 +1,99 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+body{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+#genel{
+    background: url(/static/image/26364.jpg) 50% no-repeat fixed;
+    background-size: cover;
+}
+
+
+#twopa{
+    background-image: linear-gradient(to right,red,black);
+    border-radius: 10px;
+    padding: 150px;
+    position: absolute;
+    top: 16%;
+    left: 19%;
+
+}
+
+#growo{
+    background: url(/static/image/145.jpg);
+    background-size: cover;
+}
+
+#textt{
+    font-size: 25px;
+    font-family: Georgia, serif;
+    color: rgb(0, 0, 0);
+}
+
+.card .card-header{
+    background-color: brown;
+}
+
+#cardi{
+    border: none;
+}
+
+@media (min-width:400px){
+    #twopa{
+    background-image: linear-gradient(to right,red,black);
+    border-radius: 10px;
+    padding-top:150px ;
+    padding-bottom: 150px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: absolute;
+    top: 5%;
+    left: auto;
+
+    }
+    #growo{
+    background:none;
+    }
+    #textt{
+        display: none;
+    }
+    .card-footer{
+        background-color: brown;
+    }
+}
+
+@media (min-width:770px){
+    #twopa{
+        background-image: linear-gradient(to right,red,black);
+        border-radius: 10px;
+        padding: 150px;
+        position: absolute;
+        top: 12%;
+        left: 19%;
+
+    }   
+    #growo{
+    background: url(/static/image/145.jpg);
+    background-size: cover; 
+    }
+    #textt{
+        display: inline;
+    }
+
+    #ustt{
+        display: none;
+    }
+    .card .card-footer{
+        display: none;
+    }
+}

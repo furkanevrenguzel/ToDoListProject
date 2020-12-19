@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background: url(/static/image/12.jpg);
+    background-size: cover;
+}
+
+body #main{
+    margin-top: 50px;
+    border-radius: 10px;
+    background: url(/static/image/25109.jpg);
+    background-size: cover;
+}
+
+body #main #title{
+    display: inline-block;
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+body #photo{
+    height: 200px;
+    width: 200;
+    
+}
