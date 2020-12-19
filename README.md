@@ -1,0 +1,2 @@
+# ToDoListProject
+User registration. - User login. - Create a to-do list. It is possible that each user has more than one to-do list. Every to-do list has a name. - List of to-do lists. - Delete the to-do list. -To-add an item to make an existing one. - Each item has a name, description, duration and status to make. - Mark exactly as "item". - Filter to-do items (status complete or not, expired, name) in the to-do list. - Order to-do items in the to-do list by creation date, deadline, name, or status. - Delete the list.
